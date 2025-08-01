@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>cafe haku</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Google Fonts（例：Noto Serif JP） -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- ヘッダー -->
+<header class="header">
+  <div class="header-container">
+    <img src="images/cafe_haku_logo.webp" alt="cafe hakuのロゴ" class="logo" />
+    
+    <button class="menu-toggle" id="menu-toggle">☰</button> 
+
+    <nav class="header-nav" id="mobile-menu">
+      <a href="#about">cafe hakuについて</a>
+      <span>/</span>
+      <a href="#menu">メニュー</a>
+      <span>/</span>
+      <a href="#access">アクセス</a>
+    </nav>
+  </div>
+</header>
+
+  <!-- メイン -->
+  <main>
+<section id="about">
+  <div class="about-container">
+    <div class="about-photo">
+      <img src="images/home.webp" alt="カフェの店内写真" />
+    </div>
+    <div class="about-text">
+<h2>cafe hakuについて</h2>
+<p>当店はお客様にごゆっくりとした時間を提供しておりますため、完全予約制です。<br>
+厳選したドリンクと焼き菓子をご提供しています。<br>
+日常の中のちょっとしたご褒美に、静かで穏やかな時間を。</p>
+
+<p><strong>営業時間：</strong>14:00〜18:00（L.O. 17:30）<br>
+<strong>定休日：</strong>なし</p>
+<p>※完全予約制です。予約はフォームより承ります。</p>
+<p><small>
+※本カフェは実在せず、LPのみの架空制作です。<br>
+製作者：<a href="https://strn2014.com/" target="_blank" rel="noopener noreferrer">出藍文庫代表 近藤貴弥</a>
+</small></p>
+    </div>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="menu-container">
+    <div class="menu-photo">
+      <img src="images/menu.webp" alt="ドリンクとスイーツの写真" />
+    </div>
+    <div class="menu-text">
+      <h2>メニュー</h2>
+      <ul>
+        <li>ドリンク 各900円</li>
+        <li>スイーツ二種 各800円</li>
+        <li>ドリンクとスイーツのセット 1500円</li>
+      </ul>
+  <p>※店内でご提供しているコーヒー豆や茶葉は、<br>テイクアウト用に100g 1,000円〜の量り売りも行っています。</p>
+    </div>
+  </div>
+</section>
+
+    <section id="access">
+      <h2>アクセス</h2>
+      <p>京都市○○区△△通り××ビル2階 / 最寄り駅：●●駅 徒歩5分</p>
+      
+
+<div class="map-container" id="map-placeholder">
+  <p>マップ情報を読み込み中です……</p>
+</div>
+      
+<p>営業時間：14:00〜18:00（L.O. 17:30）</p>
+<p>定休日：なし</p>
+<p>※完全予約制です。予約はフォームより承ります。</p>
+      
+      <p><a href="https://www.instagram.com/strn2014/" target="_blank" rel="noopener noreferrer">Instagramはこちら</a></p>
+  </section>
+  </main>
+    
+<div id="loading" style="display: none;">予約可能な日付を読み込んでいます……</div>
+<!-- カレンダー表示エリア（モーダル） -->
+<div id="calendar-modal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <span id="modal-close" class="close-btn">&times;</span>
+    <h3>ご希望の日付をお選びください</h3>
+        <p class="legend">◎……余裕あり　△……残りわずか　×……満席</p>
+<div id="calendar" class="calendar-grid"></div>
+        <div id="time-options" style="display: none;">
+  <h4>ご来店の希望時間をお選びください</h4>
+  <div id="time-buttons" class="calendar-grid"></div>
+  
+          <!-- ユーザー情報入力エリア -->
+<div id="user-info" style="display: none; margin-top: 20px;">
+  <h4>ご予約者情報をご入力ください</h4>
+  <input type="text" id="name" placeholder="代表者のお名前（必須）" required />
+  <input type="email" id="email" placeholder="メールアドレス（必須）" required />
+  <select id="guests">
+    <option value="1名">1名</option>
+    <option value="2名">2名</option>
+  </select>
+  <select id="duration">
+    <option value="1時間">1時間</option>
+    <option value="1.5時間">1.5時間</option>
+    <option value="2時間">2時間</option>
+  </select>
+  <button id="submit-btn" class="calendar-btn" style="margin-top: 10px;">予約する</button>
+</div>
+</div>
+  </div>
+</div>
+    
+    
+<!-- 固定フッター（予約ボタン） -->
+<footer class="footer-fixed">
+<a href="javascript:void(0);" id="reservation-btn" class="cta-button">ご予約はこちら</a>
+</footer>
+
+<!-- 通常のページフッター -->
+<footer class="footer-main">
+  <p>画像は全て生成AI（ChatGPT）にて出力しております。</p>
+  <p>&copy; 2025 cafe haku</p>
+</footer>
+
+<!-- ✅ jsファイルの読み込み -->
+<script src="script.js"></script>
+  
+<div id="submit-loading" class="loading-overlay" style="display: none;">
+  <div class="loading-content">
+    <div class="spinner"></div>
+    <p>予約情報を送信中です……</p>
+  </div>
+</div>
+</body>
+</html>
